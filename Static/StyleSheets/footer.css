@@ -1,0 +1,18 @@
+footer a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.end {
+    color: #fff !important;
+    background-color: #000 !important;
+}
+
+footer {
+    padding-bottom: 0px !important;
+}

@@ -1,0 +1,132 @@
+
+.search {
+    position: relative;
+    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+}
+
+.search input {
+    height: 50px;
+    text-indent: 25px;
+    border: 2px solid #d6d4d4
+}
+
+.search input:focus {
+    box-shadow: none;
+    border: 2px solid #e5345b;
+}
+
+.search .fa-search {
+    position: absolute;
+    top: 20px;
+    left: 16px
+}
+
+.search button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 40px;
+    width: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5345b;
+}
+
+.icon {
+    width: 50px !important;
+    padding: 0px !important;
+}
+
+.title h2::before {
+    position: absolute;
+    content: '';
+    width: 4px;
+    height: 50px;
+    background-color: #e5345b;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.filter-btn {
+    border: 1px solid #d6d4d4 !important;
+    
+}
+
+.filter-btn:hover {
+    background-color: #e5345b;
+    color: #fff !important;
+}
+
+.active-btn, .adopt-btn, .email-btn {
+    background-color: #e5345b !important;
+    color: #fff !important;
+    border-color: #e5345b !important;
+}
+
+.pgs {
+    color: #e5345b !important;
+}
+
+footer a {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+footer a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.end {
+    color: #fff !important;
+    background-color: #000 !important;
+}
+
+footer {
+    padding-bottom: 0px !important;
+}
+
+
+.square-box{
+    position: relative;
+    width: 60%;
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.square-box:hover {
+    border-radius: 0px;
+    transform: scale(1.5) translateY(20%);
+}
+
+.square-box:before{
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+.square-content{
+    position:  absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-position: center;
+    background-size: 100% 100%;
+    background-size: cover;
+}
+
+.cardImage {
+    
+    background-size: cover;
+    background-position: center;
+}
+
+#NavBar {
+    background: rgb(229,52,91);
+    background: linear-gradient(306deg, rgba(229,52,91,1) 0%, rgba(229,52,91,1) 100%);
+
+}

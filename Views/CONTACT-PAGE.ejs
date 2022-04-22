@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTACT-PAGE</title>
+
+   
+
+    <link rel="stylesheet" href="StyleSheets/CONTACT-PAGE.css" />
+        
+</head>
+
+<body>
+
+     
+
+    <div class="container">
+                <span class="circle-3"></span>
+                <span class="circle-4"></span>
+                <span class="c-skew"></span>
+        <div class="form" >
+
+
+            <div class="contact-info">
+                <h2>Connect With us</h2>
+                <p id="info-text">We would love to respond to your queries and help you succeed.Feel free to get in touch with us.<br>&nbsp;</p>
+                
+
+                <div class="info">
+                    <p class="p-info"><span class="logo"><img src="../Resources/images/Contactimage/home.png"></span><span class="text">IIIT Sricity,Chittoor</span></p>
+                    <p class="p-info"><span class="logo"><img src="../Resources/images/Contactimage/phone.png"></span><span class="text">9534579833</span></p>
+                    <p class="p-info"><span class="logo"><img src="../Resources/images/Contactimage/mail.jfif"></span><span class="text">help@smail.com</span></p>
+                </div>
+                <h2>Join us at</h2>
+                <div class="link">
+                    <a href="https://www.facebook.com/"><img src="../Resources/images/Contactimage/f-b.jpg" id="fb"></a>
+                    <a href="https://www.instagram.com/"><img src="../Resources/images/Contactimage/ig.png" id="ig"></a>
+                    <a href="https://www.whatsapp.com/"><img src="../Resources/images/Contactimage/w-b.jfif"></a>
+                    <a href="https://twitter.com/?lang=en"><img src="../Resources/images/Contactimage/twitter.png"></a>
+
+                </div>
+                <span class="circle-1"></span>
+                <span class="circle-2"></span>
+
+
+            </div>
+            <div class="contact-form">
+                <span class="circle one"></span>
+                <span class="circle two"></span>
+
+
+                <form  action="/action.php" name="contactForm" method="post" id="form1" >
+                    <h3 class="title">Contact us</h3>
+                    <div class="input-container">
+                        <label for="name" id="l-name">Name</label>
+                        <span id="s-name">Username</span>
+                        <input type="text" name="name" id="name" class="input" onfocus="getFocus()"  onblur="getBlur(this)" required>
+                        
+                        
+                    </div>
+                    <div class="input-container">
+                        <input type="email" name="email" id="email" class="input" onfocus="getFocus2()" onblur="getBlur2(this)" required>
+                        <label for="email" id="l-email">Email</label>
+
+                        <span id="s-email">Email</span>
+                    </div>
+                    <div class="input-container">
+                        <input type="number" name="phone" id="phone" class="input" onfocus="getFocus1()" onblur="getBlur1(this)" required >
+                        <label for="phone" id="l-phone">Phone</label>
+                        <span id="s-phone">Phone</span>
+                    </div>
+                    <div class="input-container textarea">
+                        <textarea name="message" id="message" class="input" onfocus="getFocus3()" onblur="getBlur3(this)" required></textarea>
+                        <label for="message" id="l-message">Message</label>
+                        <span id="s-message">Message</span>
+                    </div>
+                    <input type="submit" value="Send" class="btn">
+                </form>
+            </div>
+        </div>
+    </div>
+
+  
+    <script src="JavaScripts/CONTACT-PAGE.JS"></script>
+</body>
+
+</html>

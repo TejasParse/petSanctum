@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="StyleSheets/signup.css">
+</head>
+<body>
+    <div class="big">
+        <div class="image">
+            <h1>Register now</h1>
+        </div>
+        <div class="container">
+            <div class="form">
+                <form id="form3" action="http://localhost:3000/SignUp" name="contactForm" method="post" name="myform">
+                    <div class="box1">
+                        <div class="card1" id="cname">
+                            <img src="../Resources/images/SignUpimage/title.jpg">
+                            <label for="name">First name</label>
+                            <input type="text" id="name" placeholder="write here" name="fname">
+                            <span id="sname"></span>
+                        </div>
+                        <div class="card1" id="ctitle">
+                            <img src="../Resources/images/SignUpimage/title.jpg">
+                            <label for="title">Last name</label>
+                            <input type="text" id="title" placeholder="write here" name="lname" >
+                            <span id="stitle"></span>
+                        </div>
+                        <div class="card1" id="cphone">
+                            
+                                <img src="../Resources/images/SignUpimage/phone.jfif">
+                                <label for="phone">Phone number</label>
+                                <input type="number" id="phone" placeholder="write here" name="phone">
+                                <span id="sphone"></span>
+                        </div>
+                        <div class="card1" id="cuname">
+                            <img src="../Resources/images/SignUpimage/username.jfif">
+                            <label for="uname">Username</label>
+                            <input type="text" id="uname" placeholder="write here" name="username" >
+                            
+                            <span id="suname"></span>                              
+                        </div>
+                    </div>
+                    <div class="box1">
+                        <div class="card2" id="cemail">
+                            <img src="../Resources/images/SignUpimage/email.jpg">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" placeholder="write here" size="33" name="email" >
+                            <span id="semail"></span>
+                        </div>
+                        <div class="card3" id="caddress">
+                            <img src="../Resources/images/SignUpimage/address.jfif">
+                            <label for="address">Correspondence address</label>
+                            <input type="text" id="address" placeholder="write here"  size="51" name="address" >
+                            <span id="saddress"></span>
+                        </div>
+                        <div class="card1" id="cstate">
+                            <img src="../Resources/images/SignUpimage/state.jfif">
+                            <label for="state">State</label>
+                            <input type="text" id="state" placeholder="write here" name="state" >
+                            <span id="sstate"></span>
+                        </div>
+                        
+                    </div>
+                    <div class="box1">
+                        <div class="card1" id="czip">
+                            <img src="../Resources/images/SignUpimage/zip.png">
+                            <label for="zip">ZIP</label>
+                            <input type="number" id="zip" placeholder="write here" name="zip">
+                            <span id="szip"></span>
+                        </div>
+                        <div class="card1" id="ccity">
+                            <img src="../Resources/images/SignUpimage/city.jfif">
+                            <label for="city">City</label>
+                            <input type="text" id="city" placeholder="write here" name="city" >
+                            <span id="scity"></span>
+                        </div>
+                        <div class="card1" id="capwd">
+                            <img src="../Resources/images/SignUpimage/pwd.jfif">
+                            <label for="pwd">Password</label>
+                            <input type="password" id="pwd" placeholder="write here" name="password">
+                            <img src="../Resources/images/SignUpimage/c-eye.png" id="c-eye" onclick="ceye(this)">
+                            <img src="../Resources/images/SignUpimage/o-eye.png" id="o-eye" onclick="oeye(this)">
+                            <span id="spwd"></span>
+                            
+                        </div>
+                        <div class="card1" id="ccpwd">
+                            <img src="../Resources/images/SignUpimage/confirm.jfif">
+                            <label for="cpwd">Confirm Password</label>
+                            <input type="password" id="cpwd" placeholder="write here" >
+                            <span id="scpwd"></span>
+                        </div>
+                        
+                    </div>
+
+                    <div class="box2">
+                        <p></p>
+                        <input type="submit" value="SUBMIT">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="JavaScripts/signup.js"></script>
+</body>
+</html>

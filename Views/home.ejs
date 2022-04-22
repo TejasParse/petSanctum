@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Sanctum</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="StyleSheets/responsive.css">
+    <link rel="stylesheet" href="StyleSheets/home.css">
+    <link rel="stylesheet" href="StyleSheets/navbar.css">
+    <link rel="stylesheet" href="StyleSheets/footer.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <%- include("partials/navbar")  %> 
+
+    <!--BANNER-->
+
+    <section id="home">
+        <div class="container-fluid px-0 top-banner" style="background: url(../Resources/images/Homeimages/stray-dof-sarfraz-scaled.jpg) no-repeat center;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-md-6">
+                        <h1 style="color: white;">Providing All Animals Homes.</h1>
+                        <p style="color: white;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis
+                            veritatis ducimus dolor harum
+                            neque consectetur ratione nisi sed architecto, atque et ipsum, esse laborum labore deleniti
+                            illum soluta molestiae nihil.</p>
+
+                        <div class="mt-4">
+                            <a href="http://localhost:3000/Adopt?type=All">
+                            <button class="main-btn" id="banner-adopt-button">
+                                Adopt A Pet
+                            </button>
+                        </a>
+                        <a href="http://localhost:3000/Upload">
+                            <button class="white-btn ms-lg-4 mt-lg-0 mt-4">
+                                Find Owner
+                            </button>
+                        </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--ABOUT-->
+    <section id="about" data-aos="fade-up">
+        <div class="about-section wrapper" style="background-color: var(--secondary-color); padding-bottom: 0;">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-md-12 mb-lg-0 mb-5">
+                        <div class="card border-0 sreekar">
+                            <img src="../Resources/images/Homeimages/154189.jpg" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12 text-sec">
+                        <h2 style="color:white;">About Us</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea magnam corrupti repudiandae?
+                            Minus asperiores ipsum adipisci exercitationem recusand</p>
+                        <a href="http://localhost:3000/DonateUs"><button class="main-btn mt-4">Read More</button></a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="rescue-stray-section wrapper" style="background-color: white;">
+                <div class="container rescue-stray">
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 col-md-12 text-sec mb-lg-0 mb-5">
+                            <h2 style="color: var(--primary-color);">Help a Stray Animal Get a Home.</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, soluta mollitia
+                                aspernatur ab ex veritatis culpa excepturi laboriosam asperiores quidem! Inventore
+                                commodi minima unde incidunt mollitia magni facere, ut corrupti!
+                                Cupiditate odio dolorum iure nostrum placeat a voluptates neque voluptas. Iusto deserunt
+                                iste nam, magni eius sint, necessitatibus debitis corporis non sequi illo quam tempora
+                                quibusdam exercitationem? Ad, accusantium cum.</p>
+                            <a href="http://localhost:3000/Rescue"><button class="main-btn mt-4">Rescue A Stray</button></a>
+                        </div>
+                        <div class="col-lg-7 col-md-12">
+                            <div class="card border-0">
+                                <img src="../Resources/images/Homeimages/img.webp" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--STATS-->
+    <section class="story" data-aos="fade-up">
+        <div class="story-section" style="background: url(../Resources/images/Homeimages/background.jpg) no-repeat center;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="text-content">
+                            <h2>It All Started With One Animal</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia est veniam magni
+                                perspiciatis, recusandae itaque voluptas. Nostrum laudantium dolores velit, soluta
+                                laboriosam similique et consequatur, optio repellat repellendus, voluptas repudiandae.
+                            </p>
+
+                            <a href="http://localhost:3000/Blogs"><button class="main-btn mt-3">Read More Blogs</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="explore-features" style="background-color: var(--white-color);">
+        
+        <div class="explore-features wrapper">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-lg-4">
+                        <div class="card bg-light h-100">
+                            <div class="card-body text-center">
+                                <div class='square-box'>
+                                    <div class='square-content' id="card1Image" style="background-image: url(../Resources/images/Homeimages/stray2.jpg);" data-aos="fade-right">
+
+                                    </div>
+                                </div>
+
+                                <!-- <h3 class="card-title mb-2 mt-2"> Feeding Animals </h3> -->
+                                <a href="http://localhost:3000/Adopt?type=All"><div class="card-btn m-3">Adopt A Pet</div></a>
+                                <p class="card-text"> We feed the animals rescued</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4">
+                        <div class="card bg-light h-100">
+                            <div class="card-body text-center">
+                                <div class='square-box'>
+                                    <div class='square-content' id="card2Image" style="background-image: url(../Resources/images/Homeimages/pet.jpg);" data-aos="fade-up"></div>
+                                </div>
+
+                                <a href="http://localhost:3000/Upload"><div class="card-btn m-3">Find Owner</div></a>
+                                <!-- <h3 class="card-title mb-2 mt-2"> They need a new Home! </h3> -->
+                                <p class="card-text"> We help them find a new place to live </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4">
+                        <div class="card bg-light h-100">
+                            <div class="card-body text-center">
+                                <div class='square-box'>
+                                    <div class='square-content' id="card3Image" style="background-image: url(../Resources/images/Homeimages/154189.jpg);" data-aos="fade-left"></div>
+                                </div>
+
+                                <a href="http://localhost:3000/Rescue"><div class="card-btn m-3">Rescue A Stray</div></a>
+                                <!-- <h3 class="card-title mb-2 mt-2"> Lorem Ipsum </h3> -->
+                                <p class="card-text"> Lorem ipsum dolor sit. sdkfhj; </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" data-aos="fade-up">
+        <div class="wrapper testimonial-section">
+            <div class="container" text-center>
+                <div class="text-center pb-4">
+                    <h2 style="color: var(--primary-color);">Testimonials</h2>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-lg-10 offset-lg-1">
+
+                        <div class="container-fluid" id="testxyz">
+                            <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                                        aria-current="true" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                                        aria-current="true" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="carousel-caption">
+                                            <img src="../Resources/images/Homeimages/testimonials/modiji.jpg" alt="">
+                                            <p>"Lorem ipsum dolor sit amet consectetur adipisicing elit"</p>
+                                            <h5 style="color: white;">Narendra Modi - Prime Minister of India</h5>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="carousel-caption">
+                                            <img src="../Resources/images/Homeimages/testimonials/putin.jpeg" alt="">
+                                            <p>"Очень хороший сайт. Пожалуйста, ставьте оценки"</p>
+                                            <h5 style="color: white;">Vladimir Putin - President of Russia</h5>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="carousel-caption">
+                                            <img src="../Resources/images/Homeimages/testimonials/testimonial.jpg" alt="" class="mt-3">
+                                            <p>"I wish there were more such organizations in the world."</p>
+                                            <h5 style="color: white;">Dr. Michelle - Animal Right Activist</h5>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- <a class="carousel-control-prev" href="#carouselExampleDark" role="button"
+                                    data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only"></span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleDark" role="button"
+                                    data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only"></span>
+                                </a> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="p-5 faq" id="questions" data-aos="fade-up">
+        <div class="container">
+            <h2 class="text-center mb-4">
+                Frequently Asked Questions
+            </h2>
+            <div class="accordion accordion-flush" id="questions">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#one">
+                            Where are you located?
+                        </button>
+                    </h2>
+                    <div id="one" class="accordion-collapse collapse" data-bs-parent="#questions">
+                        <div class="accordion-body">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur iste error molestiae
+                            magnam dolor unde repellat quo, laborum amet culpa saepe, quaerat nobis ducimus nulla aut
+                            laboriosam voluptas mollitia, velit dolorum dignissimos. Laboriosam vero aperiam asperiores,
+                            doloremque maiores, hic sit repellendus, rerum labore aspernatur odio aut accusamus quaerat
+                            quos dolores?
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#two">
+                            What do I need to know?
+                        </button>
+                    </h2>
+                    <div id="two" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia deleniti animi non nemo,
+                            nulla expedita blanditiis, commodi consequatur explicabo distinctio repudiandae! Facere
+                            vitae sequi qui magnam ea. Officia enim qui quasi, voluptate dignissimos autem optio nulla
+                            doloribus eveniet fugit omnis adipisci iure voluptatibus in tenetur earum natus cupiditate
+                            obcaecati aperiam.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#three">
+                            How much does it cost?
+                        </button>
+                    </h2>
+                    <div id="three" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti distinctio ducimus
+                            provident, officiis quibusdam beatae nihil ab sit? Iusto quaerat nobis veniam maxime rerum.
+                            Laudantium nostrum explicabo corporis quam ratione quidem in dignissimos, debitis eum
+                            dolorum, voluptatum consequatur nihil adipisci voluptates consequuntur laborum laboriosam id
+                            beatae mollitia? Vel, a corporis.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#four">
+                            How do I sign up?
+                        </button>
+                    </h2>
+                    <div id="four" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti distinctio ducimus
+                            provident, officiis quibusdam beatae nihil ab sit? Iusto quaerat nobis veniam maxime rerum.
+                            Laudantium nostrum explicabo corporis quam ratione quidem in dignissimos, debitis eum
+                            dolorum, voluptatum consequatur nihil adipisci voluptates consequuntur laborum laboriosam id
+                            beatae mollitia? Vel, a corporis.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#five">
+                        What can I expect out of your courses?
+                    </button>
+                </h2>
+                <div id="five" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti distinctio ducimus provident,
+                        officiis quibusdam beatae nihil ab sit? Iusto quaerat nobis veniam maxime rerum. Laudantium
+                        nostrum explicabo corporis quam ratione quidem in dignissimos, debitis eum dolorum, voluptatum
+                        consequatur nihil adipisci voluptates consequuntur laborum laboriosam id beatae mollitia? Vel, a
+                        corporis.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include("partials/footer") %> 
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
+</body>
+
+</html>

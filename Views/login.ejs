@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="StyleSheets/login.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="page">
+            <div class="image"><img src="../Resources/images/Limage/mobile.svg"></div>
+             
+            
+            <div class="form">
+                <form  name="loginForm"  id="form2" action="http://localhost:3000/LogIn" method="post"> 
+                    <div class="header">
+                        <img src="../Resources/images/Limage/best.jfif">
+                        <h2>WELCOME</h2>
+                    </div>
+                    <div class="input-container" >
+                      
+                      <label for="name" id="l-name">Username</label> 
+                      <span id="s-name" >Username</span>
+                      <input type="text" id="name" name="username" class="input" onfocus="getFocus(this)" onblur="getBlur(this)" required>
+
+                    </div>
+                    <div class="input-container" >
+                        <span id="s-pwd" >Password</span>
+                        <label for="pwd" id="l-pwd">Password</label> 
+                        <div class="lock"><input name="password" type="password" id="pwd" class="input" onfocus="getFocus1(this)" onblur="getBlur1(this)" required>
+                        <img src="../Resources/images/Limage/c-eye.png"id="c-eye" onclick="show(this)">
+                        <img src="../Resources/images/Limage/o-eye.png"id="o-eye" onclick="show1(this)"></div>
+                    </div>
+                    <div class="btn">
+                        <a href="">*Forgot your password?</a>
+                        <input type="submit" id="btn" value="SIGN IN">
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="login.js"></script> -->
+    <script src="JavaScripts/login.js"></script>
+</body>
+
+</html>

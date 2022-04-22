@@ -1,0 +1,195 @@
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Owner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="StyleSheets/navbar.css">
+    <link rel="stylesheet" href="StyleSheets/footer.css">
+    <link rel="stylesheet" href="StyleSheets/upload.css">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+
+    <%- include("partials/navbar") %>
+
+        <!--Main-->
+        <div class="page-content page-container" id="page-content">
+            <div class="padding">
+                <div class="row container d-flex justify-content-center">
+                    <div class="col-xl-8 col-md-12">
+                        <div class="card user-card-full">
+                            <form action="http://localhost:3000/Upload" method="post" id="form" enctype="multipart/form-data">
+                                <div class="row m-l-0 m-r-0">
+                                    <div
+                                        class="col-sm-4 bg-c-lite-green user-profile d-flex justify-content-center align-items-center">
+                                        <div class="card-block text-center text-white">
+                                            <div class="m-b-25 pet-img"> </div>
+                                            <div class="mb-3">
+                                                <label for="formFileSm" class="form-label">Choose pet Image</label>
+                                                <input class="form-control form-control-sm" id="formFileSm" type="file"
+                                                    accept="image/*" onchange="loadFile(event)" name="image" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <div class="card-block">
+                                            <h6 class="m-b-20 p-b-5 b-b-default f-w-600">Enter Pet Profile</h6>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-5 f-w-600">Name of Pet</p>
+                                                    <input class="form-control form-control-sm" type="text"
+                                                        placeholder="Enter here" name="name" required id="petName">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-5 f-w-600">Animal</p>
+                                                    <select class="form-select form-select-sm" aria-label="Default select example" name="type">
+                                
+                                                        <option selected value="Dog">Dog</option>
+                                                        <option value="Cat">Cat</option>
+                                                        <option value="Fish">Fish</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-5 f-w-600">Name of Breed</p>
+                                                    <input class="form-control form-control-sm" type="text"
+                                                        placeholder="Enter here" name="breed" id="breed" required>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-5 f-w-600">Age</p>
+                                                    <input class="form-control form-control-sm" type="number"
+                                                        placeholder="Enter here" name="age" value="1">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-5 f-w-600">Good with Humans</p>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="inlineRadio1"
+                                                            value="Yes" name="otherhumans">
+                                                        <label class="form-check-label" for="inlineRadio1">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="inlineRadio2"
+                                                            value="No" name="otherhumans" checked>
+                                                        <label class="form-check-label" for="inlineRadio2">No</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-5 f-w-600">Good with Other Pets</p>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="inlineRadio11"
+                                                            value="Yes" name="otherpets">
+                                                        <label class="form-check-label" for="inlineRadio11">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="inlineRadio21"
+                                                            value="No" name="otherpets" checked>
+                                                        <label class="form-check-label" for="inlineRadio21">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-5 f-w-600">Trained</p>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="inlineRadio12"
+                                                            value="Yes" name="trained">
+                                                        <label class="form-check-label" for="inlineRadio12">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="inlineRadio22"
+                                                            value="No" name="trained" checked>
+                                                        <label class="form-check-label" for="inlineRadio22">No</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <p class="m-b-5 f-w-600">Vaccinated</p>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="inlineRadio13"
+                                                            value="Yes" name="vaccinated">
+                                                        <label class="form-check-label" for="inlineRadio13">Yes</label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" id="inlineRadio23"
+                                                            value="No" name="vaccinated" checked>
+                                                        <label class="form-check-label" for="inlineRadio23">No</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <h6 class="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Any Additional
+                                                Information</h6>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <textarea rows="5" class="form-control"
+                                                        id="exampleFormControlTextarea1" rows="3"
+                                                        name="additional"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 my-4">
+                                                    <button class="btn adopt-btn" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >
+                                                        Upload
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                                    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="staticBackdropLabel">Are you sure?</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <!-- <div class="modal-body">
+                                                ...
+                                            </div> -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Abort</button>
+                                                <button type="submit" class="btn btn-success">Upload</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--Footer-->
+
+        <%- include("partials/footer") %>
+
+            <script src="JavaScripts/jquery-3.6.0.js"></script>
+            <script src="JavaScripts/upload.js"></script>
+
+            <!-- JavaScript Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
+
+</body>
+
+</html>

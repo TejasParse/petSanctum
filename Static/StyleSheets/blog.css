@@ -1,0 +1,151 @@
+html {
+    scroll-behavior: smooth;
+}
+
+hr {
+    color: white;
+}
+
+body {
+    /* background: rgb(158,255,0);
+    background: linear-gradient(138deg, rgba(107,241,34,1) 0%, rgba(79,232,170,1) 35%, rgba(31,207,191,1) 65%, rgba(0,192,255,1) 100%); */
+
+    /* background: rgb(153,0,221);
+    background: linear-gradient(90deg, rgba(153,0,221,1) 0%, rgba(207,0,160,1) 53%, rgba(255,0,77,1) 100%); */
+
+    background: rgb(49,54,152);
+background: linear-gradient(34deg, rgba(49,54,152,1) 0%, rgba(18,115,184,1) 49%, rgba(0,212,255,1) 100%);
+
+    /* background-color: rgb(255, 255, 255); */
+}
+
+
+.FeaturedImages {
+   
+    height: 300px;
+
+}
+
+.card {
+    transition: all 0.7s ease-in;
+}
+.card:hover {
+    font-size: 1.2em;
+
+} 
+
+.blog {
+    transition: all 0.8s ease-in-out;
+    background: rgb(216, 216, 216);
+
+    /* background: rgb(132,255,0);
+    background: linear-gradient(90deg, rgba(132,255,0,1) 0%, rgba(85,255,0,1) 50%, rgba(0,255,172,1) 100%); */
+   
+}
+
+/* .blog:hover {
+    cursor: pointer;
+    background-color: rgb(49, 49, 49);
+    box-shadow: 0px 0px 25px 14px rgb(44, 39, 39);
+} */
+.card1 {
+    transform: translateX(-20px);
+}
+
+.carousel-inner {
+    width: 100%;
+    max-height: 600px !important;
+}
+
+#OtherPost {
+    background: rgb(153,0,221);
+background: linear-gradient(90deg, rgba(153,0,221,1) 0%, rgba(207,0,160,1) 53%, rgba(255,0,77,1) 100%);
+}
+
+.carousel-item{
+    max-height: 460px !important;
+}
+
+.maincontainer { 
+    margin : 0;
+    padding-top: 30px;
+    box-sizing : border-box;
+}
+
+.maincontainer {
+    display : flex;
+    align-items : center;
+    justify-content : center;  
+    /* background-color: #43345d; */
+    min-height : 600px;
+}
+  
+  .maincard {
+    position : relative;
+    width : 1100px;
+    display : flex;
+    align-items : center;
+    justify-content : center;
+    flex-wrap : warp;
+    padding : 30px;  
+  }
+  
+  .maincard .card1 {
+    position: relative;
+    max-width : 300px;
+    height : 215px;  
+    background-color : #fff;
+    margin : 30px 10px;
+    padding : 20px 15px;
+    
+    display : flex;
+    flex-direction : column;
+    box-shadow : 0 5px 20px rgba(0,0,0,0.5);
+    transition : 0.3s ease-in-out;
+    border-radius : 15px;
+  }
+  .maincard .card1:hover {
+    height : 320px;    
+  }
+  
+  
+  .maincard .card1 .image {
+    position : relative;
+    width : 260px;
+    height : 260px;
+    
+    top : -40%;
+    left: 8px;
+    box-shadow : 0 5px 20px rgba(0,0,0,0.2);
+    z-index : 1;
+  }
+  
+  .maincard .card1 .image img {
+    max-width : 100%;
+    border-radius : 15px;
+  }
+  
+  .maincard .card1 .content {
+    position : relative;
+    top : -140px;
+    padding : 10px 15px;
+    color : #111;
+    text-align : center;
+    
+    visibility : hidden;
+    opacity : 0;
+    transition : 0.3s ease-in-out;
+      
+  }
+  
+  .maincard .card1:hover .content {
+     margin-top : 30px;
+     visibility : visible;
+     opacity : 1;
+     transition-delay: 0.2s;
+    
+  }
+
+a {
+    text-decoration: none;
+}
