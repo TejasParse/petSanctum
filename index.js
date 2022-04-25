@@ -239,14 +239,15 @@ app.get("/Profile", async(req, res) => {
     console.log(LoginStatus);
 
     const profiles = await Profile.find({});
+
     const animals = await Pet.find({});
     const blogs = await Blog.find({});
     
     const adopted = await Pet.find({ "_id": { $in: LoginProfile.adopted } });
-    console.log(adopted);
+    console.log(profiles);
 
     const rescued = await Pet.find({ "_id": { $in: LoginProfile.rescued } });
-    console.log(rescued);
+    
 
     // console.log(blogs);
     const temp = req.query;
