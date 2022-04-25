@@ -1,0 +1,232 @@
+[{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fdd"
+  },
+  "name": "Ash",
+  "type": "Dog",
+  "sex": "Male",
+  "breed": "Stray",
+  "age": 13,
+  "vaccinated": "No",
+  "otherpets": "No",
+  "otherhumans": "Yes",
+  "trained": "Yes",
+  "additional": "This is just to check if the database is working or not",
+  "imageUrl": "../Resources/images/Adoptimages/animal1.jpg",
+  "owner": "Team Pet Sanctum",
+  "phone": "9878788788",
+  "address": "address1",
+  "isAdopt": "-1",
+  "pincode": "500016",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fde"
+  },
+  "name": "Lucy",
+  "type": "Dog",
+  "sex": "Female",
+  "breed": "Poodle",
+  "age": 5,
+  "vaccinated": "Yes",
+  "otherpets": "Yes",
+  "otherhumans": "Yes",
+  "trained": "Yes",
+  "additional": "Very Playful Dog",
+  "imageUrl": "../Resources/images/Adoptimages/animal2.jpg",
+  "owner": "Parth",
+  "phone": "9878788234",
+  "address": "address2",
+  "isAdopt": "-1",
+  "pincode": "500013",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fdf"
+  },
+  "name": "Mickey",
+  "type": "Cat",
+  "sex": "Male",
+  "breed": "Scottish Fold",
+  "age": 8,
+  "vaccinated": "Yes",
+  "otherpets": "No",
+  "otherhumans": "Yes",
+  "trained": "No",
+  "additional": "A very cute cat. Mickey doesn't like travelling.",
+  "imageUrl": "../Resources/images/Adoptimages/animal3.jpg",
+  "owner": "Rahul",
+  "phone": "9878728934",
+  "address": "address3",
+  "isAdopt": "-1",
+  "pincode": "500102",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fe0"
+  },
+  "name": "Kelly",
+  "type": "Fish",
+  "sex": "Female",
+  "breed": "Goldfish",
+  "age": 1,
+  "vaccinated": "NA",
+  "otherpets": "Yes",
+  "otherhumans": "Yes",
+  "trained": "No",
+  "additional": "A very cute golden fish. She likes to eat chicken. The Aquarium needs to be cleaned every 2 days",
+  "imageUrl": "../Resources/images/Adoptimages/animal4.jpg",
+  "owner": "Yash",
+  "phone": "9878753095",
+  "address": "address4",
+  "isAdopt": "-1",
+  "pincode": "500019",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fe1"
+  },
+  "name": "Munchy",
+  "type": "Cat",
+  "sex": "Female",
+  "breed": "Munchkin Cat",
+  "age": 9,
+  "vaccinated": "Yes",
+  "otherpets": "Yes",
+  "otherhumans": "No",
+  "trained": "No",
+  "additional": "Munchy likes to play with the owner always. She loves eating and sleeps a lot.",
+  "imageUrl": "../Resources/images/Adoptimages/animal5.jpg",
+  "owner": "Tejas",
+  "phone": "9877867786",
+  "address": "address5",
+  "isAdopt": "-1",
+  "pincode": "500103",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fe2"
+  },
+  "name": "Bruno",
+  "type": "Dog",
+  "sex": "Male",
+  "breed": "Pug",
+  "age": 13,
+  "vaccinated": "Yes",
+  "otherpets": "Yes",
+  "otherhumans": "Yes",
+  "trained": "No",
+  "additional": "Bruno likes to eat and sleep a lot. He also enjoys and evening walk.",
+  "imageUrl": "../Resources/images/Adoptimages/animal6.jpg",
+  "owner": "Avinash",
+  "phone": "7678786678",
+  "address": "address6",
+  "isAdopt": "-1",
+  "pincode": "500020",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fe3"
+  },
+  "name": "Bloop",
+  "type": "Fish",
+  "sex": "Female",
+  "breed": "Pearlscale",
+  "age": 1,
+  "vaccinated": "NA",
+  "otherpets": "No",
+  "otherhumans": "Yes",
+  "trained": "No",
+  "additional": "She likes to have some stuff to play with in her aquarium.",
+  "imageUrl": "../Resources/images/Adoptimages/animal7.jpg",
+  "owner": "Rakesh",
+  "phone": "6867867886",
+  "address": "address7",
+  "isAdopt": "-1",
+  "pincode": "500029",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fe4"
+  },
+  "name": "Chat",
+  "type": "Dog",
+  "sex": "Male",
+  "breed": "Labrador",
+  "age": 4,
+  "vaccinated": "Yes",
+  "otherpets": "Yes",
+  "otherhumans": "Yes",
+  "trained": "Yes",
+  "additional": "Chat really loves to play. He also likes to eat a lot and sleep on one's shoulder.",
+  "imageUrl": "../Resources/images/Adoptimages/animal8.jpg",
+  "owner": "Pranjay",
+  "phone": "8678678665",
+  "address": "address8",
+  "isAdopt": "-1",
+  "pincode": "500035",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fe5"
+  },
+  "name": "Tollo",
+  "type": "Fish",
+  "sex": "Male",
+  "breed": "Shubunkin",
+  "age": 1,
+  "vaccinated": "NA",
+  "otherpets": "Yes",
+  "otherhumans": "Yes",
+  "trained": "No",
+  "additional": "Tollo only eats vegeterian food. She loves her veggies.",
+  "imageUrl": "../Resources/images/Adoptimages/animal9.jpg",
+  "owner": "Satya",
+  "phone": "4564564564",
+  "address": "address9",
+  "isAdopt": "-1",
+  "pincode": "500049",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fe6"
+  },
+  "name": "Kitty",
+  "type": "Cat",
+  "sex": "Female",
+  "breed": "Persian Cat",
+  "age": 5,
+  "vaccinated": "Yes",
+  "otherpets": "Yes",
+  "otherhumans": "Yes",
+  "trained": "Yes",
+  "additional": "Kitty likes to play a lot with the owner and eats a lot of fish.",
+  "imageUrl": "../Resources/images/Adoptimages/animal10.jpg",
+  "owner": "Rajendra",
+  "phone": "9877897899",
+  "address": "address10",
+  "isAdopt": "-1",
+  "pincode": "500016",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "626718d56555b8b178df9fe7"
+  },
+  "name": "Pillu",
+  "type": "Other",
+  "sex": "Male",
+  "breed": "Sun Conure",
+  "age": 3,
+  "vaccinated": "NA",
+  "otherpets": "Yes",
+  "otherhumans": "No",
+  "trained": "Yes",
+  "additional": "He loves Chilli",
+  "imageUrl": "../Resources/images/Adoptimages/animal13.jpg",
+  "owner": "Team Pet Sanctum",
+  "phone": "9878788788",
+  "address": "address 13",
+  "isAdopt": "-1",
+  "pincode": "500013",
+  "__v": 0
+}]

@@ -22,56 +22,6 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <!-- <header>
-        <nav class="navbar navbar-expand-lg navbar-light sticky-top" id="NavBar" style="background-color: #e5345b;">
-            <div class="container-fluid">
-                <img src="../Resources/logos/dog_emoji.png" alt="" width="30" height="30">
-                <a class="navbar-brand ms-1" href="#">
-                    Pet Sanctum
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav ms-4 me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="http://localhost:3000/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="http://localhost:3000/Adopt">Adopt</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Rescue</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Upload</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="http://localhost:3000/DonateUs">Donate</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="http://localhost:3000/Blogs">Blogs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Contact Us</a>
-                        </li>
-
-                    </ul>
-
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="http://localhost:3000/Profile">Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">Login</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header> -->
 
     <%- include("partials/navbar")  %> 
 
@@ -82,7 +32,7 @@
                 <div class="search"> <i class="fa fa-search"></i> 
                     <form action="/Adopt" method="get">
                         <input type="text" class="form-control"
-                        placeholder="Search by Breed or Pincode" name="search"> <button class="btn text-light" type="submit">Search</button></form> </div>
+                        placeholder="Search by Breed or Pincode or Name" name="search"> <button class="btn text-light" type="submit">Search</button></form> </div>
             </div>
         </div>
     </div>
@@ -138,20 +88,7 @@
         </div>
     </div>
 
-    <!-- Pagination
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link pgs" href="#" tabindex="-1">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link pgs" href="#">1</a></li>
-            <li class="page-item"><a class="page-link pgs" href="#">2</a></li>
-            <li class="page-item"><a class="page-link pgs" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link pgs" href="#">Next</a>
-            </li>
-        </ul>
-    </nav> -->
+
 
     <%- include("partials/footer")  %> 
 

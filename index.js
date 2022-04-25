@@ -58,7 +58,7 @@ app.get("/Adopt",async (req,res)=>{
     console.log(temp);
 
     let type1 = temp.type;
-    if(temp.search==undefined && temp.type==undefined) 
+    if(temp.search==undefined && temp.type==undefined) // 
     {
         const PetsData = await Pet.find({isAdopt:-1});
         res.render("adopt",{ animalList: PetsData,LoginStatus,LoginProfile,isAdmin});
@@ -78,6 +78,12 @@ app.get("/Adopt",async (req,res)=>{
                         },
                         {
                             breed: {
+                                $regex: `${temp.search}`,
+                                $options: "i",
+                            }
+                        },
+                        {
+                            name: {
                                 $regex: `${temp.search}`,
                                 $options: "i",
                             }
@@ -113,6 +119,7 @@ app.get("/Upload",(req,res)=>{
     {
         res.render("upload",{LoginStatus,LoginProfile,isAdmin});
     }
+
 });
 
 app.post("/Upload",upload.single("image"),async (req,res)=>{
@@ -127,7 +134,9 @@ app.post("/Upload",upload.single("image"),async (req,res)=>{
     temp.isAdopt = -1;
     temp.imageUrl = req.file.path;
     console.log(req.file);
+
     temp.pincode = LoginProfile.zip;
+
     const pet = new Pet(temp);
     const tp1 = await Profile.updateOne({_id:LoginProfile._id}, { $push: { rescued: pet._id } } , {new: true});
     LoginProfile.rescued.push(pet._id);
@@ -197,9 +206,6 @@ app.get("/Pet", async (req, res) => {
 
     uid = temp1["id"]
     
-    if(uid==undefined) {
-        uid=1;
-    }
 
     const petData = await Pet.findById(uid);
     console.log(petData);
@@ -271,6 +277,7 @@ app.post("/SignUp",(req,res)=> {
     temp.imageUrl = "../Resources/images/empty_profile.webp";
     temp.isAdmin = 0;
     let ProfileData = new Profile(temp);
+
     ProfileData.save()
         .then(()=>{
             console.log("Profile Data inserted successfully");
@@ -286,13 +293,19 @@ app.post("/SignUp",(req,res)=> {
 
 app.post("/AddBlog",upload.single("blogImage"),async (req,res)=>{
 
+    if(LoginStatus==0) {
+        res.send("<script>alert('Please Login'); window.location.href='/Login'</script>");
+        return;
+    }
+
     console.log(req.body);
     console.log(req.file);
 
     const newBlog = new Blog({
         imageUrl: req.file.path,
         title: req.body.title,
-        description: req.body.description
+        description: req.body.description,
+        author: LoginProfile.fname+" "+ LoginProfile.lname
     })
 
     await newBlog.save()
@@ -465,6 +478,8 @@ app.get("/deletePet",async (req,res)=>{
         res.send("<script>alert('You are not authorized to view this page'); window.location.href='/'</script>")
         return;
     }
+
+    // await Pet.deleteOne({name:""})
     
     const temp = await Pet.findByIdAndDelete(id);
     
