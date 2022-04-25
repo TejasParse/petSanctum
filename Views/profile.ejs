@@ -10,7 +10,7 @@
     <%- include("partials/imports.ejs") %>
 
         <link rel="stylesheet" href="StyleSheets/profile.css">
-
+        <link rel="icon" href="../Resources/logos/dog_emoji.png" type="image/x-icon">
 </head>
 
 <body>
@@ -104,12 +104,17 @@
                                 value="<%= LoginProfile.lname %>" required>
                                 <label for="inputlName" class="ms-2 mb-1">Last Name</label>
                             </div>
-                            <div class="col-12 form-floating mb-2">
+                            <div class="col-6 form-floating mb-2">
                                 <input type="text" class="form-control" id="inputUsername" placeholder="Username"
                                 value="<%= LoginProfile.username %>"  name="username" required>
                                 <label for="inputUsername" class="ms-2 mb-1">Username</label>
                             </div>
-                            <div class="input-group mb-3 col-12">
+                            <div class="col-md-6 form-floating mb-2">
+                                <input type="email" class="form-control" id="floatingInput" name="email"
+                                    placeholder="name@example.com required" value="<%= LoginProfile.email %>">
+                                <label for="floatingInput" class="ms-2 mb-1">Email address</label>
+                            </div>
+                            <div class="input-group mb-3 col-6">
                                 <span class="input-group-text">+91</span>
                                 <div class="form-floating flex-grow-1">
                                     <input type="number" class="form-control" name="phone" placeholder="Code 1"
@@ -117,15 +122,24 @@
                                     <label for="code1">Phone Number</label>
                                 </div>
                             </div>
-                            <div class="col-md-6 form-floating mb-2">
-                                <input type="email" class="form-control" id="floatingInput" name="email"
-                                    placeholder="name@example.com required" value="<%= LoginProfile.email %>">
-                                <label for="floatingInput" class="ms-2 mb-1">Email address</label>
-                            </div>
-                            <div class="col-md-6 form-floating mb-2">
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="password" name="password"
-                                    required value="<%= LoginProfile.password %>" >
-                                <label for="inputPassword4" class="form-label ms-2 mb-1">Password</label>
+                            <div class="input-group mb-2 col-6">
+                   
+                                <div class="form-floating flex-grow-1">
+                                    <input name="password" type="password" class="input form-control" id="password" placeholder="Enter New Password" required="true" aria-label="password" aria-describedby="basic-addon1" minlength="9" value="<%= LoginProfile.password %>" />
+                                    
+                                    <label for="password" class="mb-1">Password</label>
+                                </div>
+                                <span class="input-group-text" id="basic-addon1">
+            
+                                    <div class="input-group-append">
+                                      <span class="input-group-text" onclick="password_show_hide();">
+                                        <i class="fas fa-eye" id="show_eye"></i>
+                                        <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                                      </span>
+                                    </div>
+            
+                                </span>
+            
                             </div>
                             <div class="col-12 form-floating mb-2">
                                 <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"
@@ -184,7 +198,7 @@
                                                         <p>
                                                             Additional: <%=rescued[i].additional%>
                                                         </p>
-                                                        <a href="http://localhost:3000/Pet?id=<%=rescued[i]._id%>"></a><Button
+                                                        <a href="http://localhost:3000/Pet?id=<%=rescued[i]._id%>"><Button
                                                             class="btn btn-outline-primary">Know More</Button></a>
                                                     </div>
                                                 </div>
@@ -231,7 +245,7 @@
                                                         <p>
                                                             Additional: <%=adopted[i].additional%>
                                                         </p>
-                                                        <a href="http://localhost:3000/Pet?id=<%=adopted[i]._id%>"></a><Button
+                                                        <a href="http://localhost:3000/Pet?id=<%=adopted[i]._id%>"><Button
                                                             class="btn btn-outline-primary">Know More</Button></a>
                                                     </div>
                                                 </div>
@@ -323,6 +337,9 @@
                                                     </div>
                                                     <div class="col-9 mt-1">
                                                         <h4> Name: <%= animals[index].name %> </h4>
+                                                        <% if (animals[index].isAdopt!=="-1") { %>
+                                                            <span class="badge badge-primary bg-primary">Adopted</span>
+                                                        <% } %>
                                                         <p> Age: <%= animals[index].age %> </p>
                                                         <p>
                                                             Additional Information:

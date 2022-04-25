@@ -14,6 +14,10 @@ const BlogSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    author: {
+        type:String,
+        require: true,
+    }
 });
 
 const Blog = mongoose.model("Blog",BlogSchema);

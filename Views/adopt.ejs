@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="StyleSheets/footer.css">
         <link rel="stylesheet" href="StyleSheets/navbar.css">
         <link rel="stylesheet" href="StyleSheets/adopt.css">
+        <link rel="icon" href="../Resources/logos/dog_emoji.png" type="image/x-icon">
     
 
 </head>
@@ -39,7 +40,7 @@
                             <a class="nav-link active" aria-current="page" href="http://localhost:3000/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="http://localhost:3000/Adopt?type=all">Adopt</a>
+                            <a class="nav-link active" href="http://localhost:3000/Adopt">Adopt</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" href="#">Rescue</a>
@@ -78,8 +79,10 @@
     <div class="container border-bottom">
         <div class="row my-3 d-flex justify-content-center align-items-center">
             <div class="col-lg-11 col-md-10 col-sm-9">
-                <div class="search"> <i class="fa fa-search"></i> <input type="text" class="form-control"
-                        placeholder="Find your perfect pet"> <button class="btn text-light">Search</button> </div>
+                <div class="search"> <i class="fa fa-search"></i> 
+                    <form action="/Adopt" method="get">
+                        <input type="text" class="form-control"
+                        placeholder="Search by Breed or Pincode" name="search"> <button class="btn text-light" type="submit">Search</button></form> </div>
             </div>
         </div>
     </div>
@@ -92,7 +95,7 @@
             </div>
             <div class="row">
                 <div class="d-flex flex-wrap justify-content-center mt-3">
-                    <a href="http://localhost:3000/Adopt?type=All"> <button type="button" class="btn m-2 text-dark filter-btn"> All </button> </a>
+                    <a href="http://localhost:3000/Adopt"> <button type="button" class="btn m-2 text-dark filter-btn"> All </button> </a>
                     <a href="http://localhost:3000/Adopt?type=Dog"> <button type="button" class="btn m-2 text-dark filter-btn"> Dogs </button> </a>
                     <a href="http://localhost:3000/Adopt?type=Cat"> <button type="button" class="btn m-2 text-dark filter-btn"> Cat </button> </a>
                     <a href="http://localhost:3000/Adopt?type=Fish"> <button type="button" class="btn m-2 text-dark filter-btn"> Fish </button> </a>
@@ -114,7 +117,8 @@
                                                 <div class='square-content cardImage' id="card12Image" style="background-image: url('<%= animalList[index].imageUrl %>');"></div>
                                             </div>
                                             <h3 class="card-title mb-2 mt-2"> <%= animalList[index]["name"] %>  </h3>
-                                            <p class="card-text"> <%= animalList[index]["breed"] %> </p>
+                                            <p class="card-text mb-0"> <%= animalList[index]["breed"] %> </p>
+                                            <p class="card-text mt-0"> <%= animalList[index]["pincode"]%></p>
                                             <div class="">
                                                 <a href="http://localhost:3000/Pet?id=<%=animalList[index]['_id']%>" target="blank">
                                                     <button type="button" class="btn m-2 text-dark adopt-btn">

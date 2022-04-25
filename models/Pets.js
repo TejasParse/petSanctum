@@ -68,6 +68,10 @@ const PetSchema = new mongoose.Schema({
         type: String,
         required: true,
         default:"-1"
+    },
+    pincode: {
+        type: String,
+        required: true
     }
 });
 

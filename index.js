@@ -50,22 +50,56 @@ app.get("/", (req, res) => {
 
 });
 
+// Search to be implemented
 app.get("/Adopt",async (req,res)=>{
 
 
     const temp = req.query;
     console.log(temp);
 
-    if(temp.type == "All")
+    let type1 = temp.type;
+    if(temp.search==undefined && temp.type==undefined) 
     {
         const PetsData = await Pet.find({isAdopt:-1});
         res.render("adopt",{ animalList: PetsData,LoginStatus,LoginProfile,isAdmin});
     }
-    else
+    else 
     {
-        const PetsData = await Pet.find({type:temp.type});
+
+        const PetsData = await Pet.find({
+            $and: [
+                {
+                    $or: [
+                        {
+                            pincode: {
+                                $regex: `${temp.search}`,
+                                $options: "i",
+                            }
+                        },
+                        {
+                            breed: {
+                                $regex: `${temp.search}`,
+                                $options: "i",
+                            }
+                        },
+                        {
+                            type: {
+                                $regex: `${type1}`,
+                                $options: "i"
+                            }
+                        }
+                    ]
+                },
+                { 
+                    isAdopt:-1
+                },
+            ]
+        });
         res.render("adopt",{ animalList: PetsData,LoginStatus,LoginProfile,isAdmin});
     }
+  
+
+
 });
 
 // To be Done
@@ -93,16 +127,16 @@ app.post("/Upload",upload.single("image"),async (req,res)=>{
     temp.isAdopt = -1;
     temp.imageUrl = req.file.path;
     console.log(req.file);
-
+    temp.pincode = LoginProfile.zip;
     const pet = new Pet(temp);
     const tp1 = await Profile.updateOne({_id:LoginProfile._id}, { $push: { rescued: pet._id } } , {new: true});
-    LoginProfile.adopted.push(pet._id);
+    LoginProfile.rescued.push(pet._id);
 
 
     pet.save()
         .then(()=>{
             console.log("Saved");
-            res.send("<script>alert('Pet Added! Thank you'); window.location.href='/adopt'</script>");         
+            res.send("<script>alert('Pet Added! Thank you'); window.location.href='/Adopt'</script>");         
         })
         .catch(()=>{
             console.log("Failed");
@@ -146,8 +180,6 @@ app.get("/ContactUs",(req,res)=>{
 
 app.get("/Blogs", async (req, res) => {
 
-
-    const sql = "SELECT * FROM blogs ORDER by uid";
     const rows = await Blog.find({});
     console.log(rows);
     
@@ -181,7 +213,6 @@ app.get("/adoptPet",async (req,res)=>{
 
     if(LoginStatus===0) {
         res.redirect("/Login");
-        
     }
     
     const { id } = req.query;
@@ -193,7 +224,7 @@ app.get("/adoptPet",async (req,res)=>{
     LoginProfile.adopted.push(id);
     console.log(LoginProfile);
 
-    res.send("hola");
+    res.send("<script>alert('Thank You for adopting a pet!'); window.location.href='/'</script>");
 
 });
 
@@ -237,7 +268,7 @@ app.post("/SignUp",(req,res)=> {
     console.log(req.body);
     const temp = req.body;
     temp.imageUrl = "../Resources/images/empty_profile.webp";
-
+    temp.isAdmin = 0;
     let ProfileData = new Profile(temp);
     ProfileData.save()
         .then(()=>{
@@ -279,7 +310,6 @@ app.get("/BlogRead",async (req,res)=> {
 
     const id = req.query.uid;
 
-
     const row = await Blog.findById(id);
 
     console.log(row);
@@ -315,7 +345,7 @@ app.post("/Rescue",upload.single("image"),async (req,res)=>{
     pet.save()
         .then(()=>{
             console.log("Saved");
-            res.send("<script>alert('Pet Added! Thank you'); window.location.href='/adopt?type=all'</script>");         
+            res.send("<script>alert('Pet Added! Thank you'); window.location.href='/Adopt'</script>");         
         })
         .catch(()=>{
             console.log("Failed");
@@ -460,6 +490,32 @@ app.post("/editProfileInfo", upload.single('ProfileImage'),async (req,res)=>{
     LoginProfile=await Profile.findById(id);
 
     res.send("<script>alert('Profile Info Edited'); window.location.href='/Profile'</script>");
+
+});
+
+app.get("/Forgot", async(req,res)=>{
+    res.render("forgotPassword",{isAdmin,LoginProfile,LoginStatus});
+});
+
+app.post("/verify", async(req,res)=>{
+
+    const { username,email,phone } = req.body;
+    const newPwd = req.body.password;
+    console.log(req.body);
+    const temp = await Profile.findOne({username});
+    console.log(temp);
+
+
+
+    if( temp==null || temp.email!==email || temp.phone!=phone) 
+    {
+        res.send("<script>alert('Password not changed. Please enter valid details'); window.location.href='/Forgot'</script>")
+    }
+    else {
+        const temp = await Profile.updateOne({username},{$set: {password: newPwd}},{runValidators:true,new:true})
+        res.send("<script>alert('Password Changed Successfully!'); window.location.href='/Login'</script>");
+    }
+
 
 });
 

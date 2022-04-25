@@ -16,11 +16,12 @@ const db = new sqlite3.Database(db_name, err => {
 mongoose.connect('mongodb://localhost:27017/PetSanctum')
     .then(()=>{
         console.log("Mongo DB Connected");
-        // addLogin();
-        // addBLog();
+        addLogin();
+        addBLog();
         addPet();
     })
     .catch((err)=>{
+        console.log(err);
         console.log("Mongo DB Failed");
     });
 
