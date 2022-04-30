@@ -1,5 +1,4 @@
 const express = require("express");
-const req = require("express/lib/request");
 const app = express();
 const path = require("path");
 const sqlite3 = require("sqlite3");
@@ -42,6 +41,16 @@ app.listen(PORT, () => {
     console.log(`Listening to port number ${PORT}`);
 })
 
+const verifyLogin = (req,res,next)=>{
+
+    if(LoginStatus==1)
+    {
+        return next();
+    }
+
+    res.send("<script>alert('Please Login to view this page'); window.location.href='/Login'</script>");
+
+}
 
 app.get("/", (req, res) => {
 
@@ -109,16 +118,11 @@ app.get("/Adopt",async (req,res)=>{
 });
 
 // To be Done
-app.get("/Upload",(req,res)=>{
-
-    if(LoginStatus==0)
-    {
-        res.send("<script>alert('Please Login to view this page'); window.location.href='/Login'</script>");
-    }
-    else
-    {
-        res.render("upload",{LoginStatus,LoginProfile,isAdmin});
-    }
+app.get("/Upload",verifyLogin,(req,res)=>{
+    
+    console.log("Inside upload")
+    res.render("upload",{LoginStatus,LoginProfile,isAdmin});
+    
 
 });
 
@@ -213,13 +217,9 @@ app.get("/Pet", async (req, res) => {
 
 });
 
-app.get("/adoptPet",async (req,res)=>{
+app.get("/adoptPet",verifyLogin,async (req,res)=>{
 
     console.log(req.query);
-
-    if(LoginStatus===0) {
-        res.redirect("/Login");
-    }
     
     const { id } = req.query;
 
@@ -234,12 +234,7 @@ app.get("/adoptPet",async (req,res)=>{
 
 });
 
-app.get("/Profile", async(req, res) => {
-
-    if(LoginStatus==0)
-    {
-        res.redirect("/Login");
-    }
+app.get("/Profile", verifyLogin,async(req, res) => {
 
     console.log(LoginProfile);
     console.log(LoginStatus);
@@ -370,17 +365,10 @@ app.post("/Rescue",upload.single("image"),async (req,res)=>{
 
 });
 
-app.get("/Rescue",(req,res)=>{
+app.get("/Rescue",verifyLogin,(req,res)=>{
 
-    if(LoginStatus==0)
-    {
-        res.send("<script>alert('Please Login to view this page'); window.location.href='/Login'</script>");
-    }
-    else
-    {
-        res.render("rescuestray",{LoginStatus,LoginProfile,isAdmin});
-    }
-
+    res.render("rescuestray",{LoginStatus,LoginProfile,isAdmin});
+    
 });
 
 app.get("/AddBlog",(req,res)=>{
@@ -397,14 +385,8 @@ app.get("/Logout",(req,res)=>{
 
 });
 
-app.get("/deleteProfile",async (req,res)=>{
+app.get("/deleteProfile",verifyLogin,async (req,res)=>{
 
-    if(LoginStatus==0)
-    {
-        res.send("<script>alert('Please Login to View this Page'); window.location.href='/Login'</script>")
-        return;
-    }
-    
     if(isAdmin==0)
     {
         res.send("<script>alert('You are not authorized to view this page'); window.location.href='/'</script>")
@@ -418,12 +400,8 @@ app.get("/deleteProfile",async (req,res)=>{
     res.redirect("/Profile");
 }); 
 
-app.get("/makeadmin", async (req,res)=>{
-    if(LoginStatus==0)
-    {
-        res.send("<script>alert('Please Login to View this Page'); window.location.href='/Login'</script>")
-        return;
-    }
+app.get("/makeadmin", verifyLogin ,async (req,res)=>{
+    
     
     if(isAdmin==0)
     {
@@ -441,15 +419,9 @@ app.get("/makeadmin", async (req,res)=>{
 
 })
 
-app.get("/deleteBlog",async (req,res)=>{
+app.get("/deleteBlog",verifyLogin,async (req,res)=>{
 
     const { id } = req.query;
-
-    if(LoginStatus==0)
-    {
-        res.send("<script>alert('Please Login to View this Page'); window.location.href='/Login'</script>")
-        return;
-    }
     
     if(isAdmin==0)
     {
@@ -463,15 +435,9 @@ app.get("/deleteBlog",async (req,res)=>{
     
 })
 
-app.get("/deletePet",async (req,res)=>{
+app.get("/deletePet",verifyLogin,async (req,res)=>{
     
     const { id } = req.query;
-    
-    if(LoginStatus==0)
-    {
-        res.send("<script>alert('Please Login to View this Page'); window.location.href='/Login'</script>")
-        return;
-    }
     
     if(isAdmin==0)
     {
