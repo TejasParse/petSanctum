@@ -35,3 +35,6 @@ username: "gulshan" password:"123456789"
 
 Github Repository Link:
 https://github.com/tanishqawasthi/petSanctum
+
+Youtube Demo Link:
+https://youtu.be/dWXAHr2F4Mc
