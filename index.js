@@ -353,8 +353,9 @@ app.post("/Rescue",upload.single("image"),async (req,res)=>{
     console.log(req.file);
 
     const pet = new Pet(temp);
-    const tp1 = await Profile.updateOne({_id:LoginProfile._id}, { $push: { rescued: pet._id } } , {new: true});
-    LoginProfile.rescued.push(pet._id);
+   
+    LoginProfile.rescued.push(pet);
+    await LoginProfile.save();
 
 
     pet.save()
