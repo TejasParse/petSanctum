@@ -29,11 +29,6 @@ async function DataFetchedLogin(rows) {
 
     await Profile.deleteMany({});
 
-    for(let i=0;i<rows.length;i++)
-    {
-        rows[i].adopted=[]
-        rows[i].rescued=[]
-    }
     const temp = await Profile.insertMany(rows);
 
 }

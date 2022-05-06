@@ -128,7 +128,6 @@ app.get("/Upload",verifyLogin,(req,res)=>{
 
 app.post("/Upload",upload.single("image"),async (req,res)=>{
 
-
     console.log(req.body);
 
     const temp = req.body;
@@ -142,9 +141,11 @@ app.post("/Upload",upload.single("image"),async (req,res)=>{
     temp.pincode = LoginProfile.zip;
 
     const pet = new Pet(temp);
-    const tp1 = await Profile.updateOne({_id:LoginProfile._id}, { $push: { rescued: pet._id } } , {new: true});
-    LoginProfile.rescued.push(pet._id);
 
+    LoginProfile.rescued.push(pet);
+    await LoginProfile.save();
+
+    console.log(LoginProfile);
 
     pet.save()
         .then(()=>{
@@ -225,9 +226,14 @@ app.get("/adoptPet",verifyLogin,async (req,res)=>{
 
     console.log(LoginProfile);
 
-    const temp = await Pet.updateOne({_id:id},{$set: {isAdopt: LoginProfile._id} });
-    const tp1 = await Profile.updateOne({_id:LoginProfile._id}, { $push: { adopted: id } } , {new: true});
-    LoginProfile.adopted.push(id);
+    const PetMongo = await Pet.findById(id);
+
+    PetMongo.isAdopt = LoginProfile._id;
+    await PetMongo.save();
+
+    LoginProfile.adopted.push(PetMongo);
+    await LoginProfile.save();
+
     console.log(LoginProfile);
 
     res.send("<script>alert('Thank You for adopting a pet!'); window.location.href='/'</script>");
@@ -245,7 +251,7 @@ app.get("/Profile", verifyLogin,async(req, res) => {
     const blogs = await Blog.find({});
     
     const adopted = await Pet.find({ "_id": { $in: LoginProfile.adopted } });
-    console.log(profiles);
+    // console.log(profiles);
 
     const rescued = await Pet.find({ "_id": { $in: LoginProfile.rescued } });
     

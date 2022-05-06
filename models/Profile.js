@@ -50,8 +50,8 @@ const ProfileSchema = new mongoose.Schema({
         type: Number,
         require: true,
     },
-    adopted: [String],
-    rescued: [String]
+    adopted: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Pet" }],
+    rescued: [{ type: mongoose.SchemaTypes.ObjectId, ref: "Pet" }]
 });
 
 const Profile = mongoose.model("Profile",ProfileSchema);
