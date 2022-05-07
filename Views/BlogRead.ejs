@@ -14,7 +14,9 @@
 <body>
 
     <%- include("partials/navbar")  %> 
-
+    <%- include("partials/successFlash")  %> 
+    <%- include("partials/failFlash")  %> 
+    
     <div class="card mb-3 ms-auto me-auto mt-5 p-4 shadow-lg">
         <img src="<%= row.imageUrl%>" class="card-img-top" alt="...">
         <div class="card-body">

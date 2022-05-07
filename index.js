@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 const { Profile }  = require("./models/Profile");
 const { Blog } = require("./models/Blogs");
 const { Pet } = require("./models/Pets");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 const { storage } = require("./cloud");
 const multer = require("multer");
@@ -32,6 +34,25 @@ const PORT = 3000;
 app.use(express.static(path.join(__dirname, "Static")));
 
 app.use(express.urlencoded({extended:true}));
+
+app.use(session({
+    secret: "thisisasecretkey", 
+    resave:false, 
+    saveUninitialized:true,
+    cookie: {
+        httpOnlyL: true,
+        maxAge: 1000*60*60*24*7
+    }    
+}));
+
+app.use(flash());
+
+app.use((req,res,next)=>{
+    res.locals.success = req.flash("success");
+    res.locals.fail = req.flash("fail");
+    console.log(res.locals);
+    next();
+})
 
 app.set("view engine", "ejs");
 
@@ -150,11 +171,14 @@ app.post("/Upload",upload.single("image"),async (req,res)=>{
     pet.save()
         .then(()=>{
             console.log("Saved");
-            res.send("<script>alert('Pet Added! Thank you'); window.location.href='/Adopt'</script>");         
+            req.flash("success","Pet Added! Thank You");
+            res.redirect("/Adopt"); 
         })
         .catch(()=>{
             console.log("Failed");
-            res.send("<script>alert('Failed to Add Pet please try again.'); window.location.href='/Upload'</script>");         
+            req.flash("fail","Failed to Add Pet please try again.");
+            res.redirect("/Upload"); 
+        
         })
 
 
@@ -182,7 +206,8 @@ app.post("/LogIn",async (req,res)=>{
         LoginStatus=1;
         LoginProfile=row;
         isAdmin = LoginProfile.isAdmin;
-        res.send("<script>alert('Logged In Successfully'); window.location.href = 'http://localhost:3000/'; </script>");
+        req.flash("success","Logged In Successfully");
+        res.redirect("/");
     }
 
 
@@ -236,7 +261,9 @@ app.get("/adoptPet",verifyLogin,async (req,res)=>{
 
     console.log(LoginProfile);
 
-    res.send("<script>alert('Thank You for adopting a pet!'); window.location.href='/'</script>");
+    req.flash("success","Thank You for adopting a pet!");
+    res.redirect("/");
+
 
 });
 
@@ -267,7 +294,6 @@ app.get("/Profile", verifyLogin,async(req, res) => {
 
 app.get("/SignUp",(req,res)=>{
 
-    
     res.render("signup");
 });
 
@@ -312,11 +338,13 @@ app.post("/AddBlog",upload.single("blogImage"),async (req,res)=>{
     await newBlog.save()
         .then((hmm)=>{
             console.log(hmm);
-            res.send(`<script>alert('New Blog Added'); window.location.href='/BlogRead?uid=${hmm._id}'</script>`)
+            req.flash("success","New Blog Added");
+            res.redirect(`/BlogRead?uid=${hmm._id}`);
         })
         .catch((err)=>{
             console.log(err);
-            res.send(`<script>alert('Error inserting new blog'); window.location.href='/'</script>`)
+            req.flash("fail","Error inserting new blog");
+            res.redirect("/");
         })
 
 });
@@ -361,11 +389,13 @@ app.post("/Rescue",upload.single("image"),async (req,res)=>{
     pet.save()
         .then(()=>{
             console.log("Saved");
-            res.send("<script>alert('Pet Added! Thank you'); window.location.href='/Adopt'</script>");         
+            req.flash("success","Pet Added! Thank you");
+            res.redirect("/Adopt");
         })
         .catch(()=>{
             console.log("Failed");
-            res.send("<script>alert('Failed to Add Pet please try again.'); window.location.href='/Upload'</script>");         
+            req.flash("fail","Failed to Add Pet please try again.");
+            res.redirect("/Upload");
         })
 
     
@@ -388,7 +418,8 @@ app.get("/Logout",(req,res)=>{
     LoginStatus=0;
     isAdmin=-1;
 
-    res.send("<script>alert('Logged out successfully'); window.location.href='/' </script>");
+    req.flash("success","Logged out successfully");
+    res.redirect("/");
 
 });
 
@@ -396,7 +427,8 @@ app.get("/deleteProfile",verifyLogin,async (req,res)=>{
 
     if(isAdmin==0)
     {
-        res.send("<script>alert('You are not authorized to view this page'); window.location.href='/'</script>")
+        req.flash("fail","You are not authorized to view that page");
+        res.redirect("/");
         return;
     }
 
@@ -412,7 +444,8 @@ app.get("/makeadmin", verifyLogin ,async (req,res)=>{
     
     if(isAdmin==0)
     {
-        res.send("<script>alert('You are not authorized to view this page'); window.location.href='/'</script>")
+        req.flash("fail","You are not authorized to view that page");
+        res.redirect("/");
         return;
     }
     
@@ -422,7 +455,8 @@ app.get("/makeadmin", verifyLogin ,async (req,res)=>{
 
     const profile = await Profile.findById(id);
 
-    res.send(`<script>alert('Admin status for ${profile.username} updated'); window.location.href='/Profile'</script>`);
+    req.flash("success",`Admin status for ${profile.username} updated`);
+    res.redirect("/Profile")
 
 })
 
@@ -432,13 +466,16 @@ app.get("/deleteBlog",verifyLogin,async (req,res)=>{
     
     if(isAdmin==0)
     {
-        res.send("<script>alert('You are not authorized to view this page'); window.location.href='/'</script>")
+        req.flash("fail","You are not authorized to view that page");
+        res.redirect("/");
         return;
     }
 
     const tmp = await Blog.findByIdAndDelete(id);
 
-    res.send(`<script>alert('Blog Deleted Successfully'); window.location.href='/Profile'</script>`);
+    req.flash("success","Blog Deleted Successfully");
+    res.redirect("/Profile");
+
     
 })
 
@@ -448,7 +485,8 @@ app.get("/deletePet",verifyLogin,async (req,res)=>{
     
     if(isAdmin==0)
     {
-        res.send("<script>alert('You are not authorized to view this page'); window.location.href='/'</script>")
+        req.flash("fail","You are not authorized to view that page");
+        res.redirect("/");
         return;
     }
 
@@ -456,7 +494,9 @@ app.get("/deletePet",verifyLogin,async (req,res)=>{
     
     const temp = await Pet.findByIdAndDelete(id);
     
-    res.send(`<script>alert('Pet Removed Successfully'); window.location.href='/Profile'</script>`);
+    req.flash("success","Pet Removed Successfully");
+    res.redirect("/Profile");
+    
 })
 
 app.post("/editProfileInfo", upload.single('ProfileImage'),async (req,res)=>{
@@ -478,7 +518,8 @@ app.post("/editProfileInfo", upload.single('ProfileImage'),async (req,res)=>{
     
     LoginProfile=await Profile.findById(id);
 
-    res.send("<script>alert('Profile Info Edited'); window.location.href='/Profile'</script>");
+    req.flash("success","Profile Info Edited");
+    res.redirect("/Profile");
 
 });
 
@@ -498,7 +539,8 @@ app.post("/verify", async(req,res)=>{
 
     if( temp==null || temp.email!==email || temp.phone!=phone) 
     {
-        res.send("<script>alert('Password not changed. Please enter valid details'); window.location.href='/Forgot'</script>")
+        req.flash("fail","Password not changed. Please enter valid details");
+        res.redirect("/Forgot")
     }
     else {
         const temp = await Profile.updateOne({username},{$set: {password: newPwd}},{runValidators:true,new:true})
