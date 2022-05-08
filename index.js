@@ -50,6 +50,9 @@ app.use(flash());
 app.use((req,res,next)=>{
     res.locals.success = req.flash("success");
     res.locals.fail = req.flash("fail");
+    res.locals.LoginStatus = LoginStatus;
+    res.locals.LoginProfile = LoginProfile;
+    res.locals.isAdmin = isAdmin;
     console.log(res.locals);
     next();
 })
@@ -73,10 +76,22 @@ const verifyLogin = (req,res,next)=>{
 
 }
 
+const verifyAdmin = (req,res,next)=>{
+
+    if(isAdmin==1)
+    {
+        return next();
+    }
+
+    req.flash("fail","You are not authorized to view that page");
+    res.redirect("/");
+
+}
+
 app.get("/", (req, res) => {
 
     console.log("Welcome to Home Page");
-    res.render("home",{LoginStatus,LoginProfile,isAdmin});
+    res.render("home");
 
 });
 
@@ -91,7 +106,7 @@ app.get("/Adopt",async (req,res)=>{
     if(temp.search==undefined && temp.type==undefined) // 
     {
         const PetsData = await Pet.find({isAdopt:-1});
-        res.render("adopt",{ animalList: PetsData,LoginStatus,LoginProfile,isAdmin});
+        res.render("adopt",{ animalList: PetsData});
     }
     else 
     {
@@ -131,7 +146,7 @@ app.get("/Adopt",async (req,res)=>{
                 },
             ]
         });
-        res.render("adopt",{ animalList: PetsData,LoginStatus,LoginProfile,isAdmin});
+        res.render("adopt",{ animalList: PetsData});
     }
   
 
@@ -142,7 +157,7 @@ app.get("/Adopt",async (req,res)=>{
 app.get("/Upload",verifyLogin,(req,res)=>{
     
     console.log("Inside upload")
-    res.render("upload",{LoginStatus,LoginProfile,isAdmin});
+    res.render("upload");
     
 
 });
@@ -180,10 +195,8 @@ app.post("/Upload",upload.single("image"),async (req,res)=>{
             res.redirect("/Upload"); 
         
         })
-
-
 });
-//
+
 
 app.get("/LogIn",(req,res)=>{
     res.render("login");
@@ -222,11 +235,11 @@ app.get("/Blogs", async (req, res) => {
     const rows = await Blog.find({});
     console.log(rows);
     
-    res.render("blogs",{"blogList":rows,LoginStatus,LoginProfile,isAdmin});
+    res.render("blogs",{"blogList":rows});
 });
 
 app.get("/DonateUs", (req, res) => {
-    res.render("donate",{LoginStatus,LoginProfile,isAdmin});
+    res.render("donate");
 });
 
 app.get("/Pet", async (req, res) => {
@@ -239,7 +252,7 @@ app.get("/Pet", async (req, res) => {
 
     const petData = await Pet.findById(uid);
     console.log(petData);
-    res.render("petinformation",{data:petData,LoginStatus,LoginProfile,isAdmin});
+    res.render("petinformation",{data:petData});
 
 });
 
@@ -287,7 +300,7 @@ app.get("/Profile", verifyLogin,async(req, res) => {
     const temp = req.query;
     console.log(temp);
         
-    res.render("profile",{profileList:profiles,animals,blogs,LoginStatus,LoginProfile,isAdmin,adopted,rescued});
+    res.render("profile",{profileList:profiles,animals,blogs,adopted,rescued});
     
 
 });
@@ -318,12 +331,7 @@ app.post("/SignUp",(req,res)=> {
 
 });
 
-app.post("/AddBlog",upload.single("blogImage"),async (req,res)=>{
-
-    if(LoginStatus==0) {
-        res.send("<script>alert('Please Login'); window.location.href='/Login'</script>");
-        return;
-    }
+app.post("/AddBlog",[verifyLogin,verifyAdmin,upload.single("blogImage")],async (req,res)=>{
 
     console.log(req.body);
     console.log(req.file);
@@ -356,7 +364,7 @@ app.get("/BlogRead",async (req,res)=> {
     const row = await Blog.findById(id);
 
     console.log(row);
-    res.render("BlogRead",{row:row,LoginStatus,LoginProfile,isAdmin});
+    res.render("BlogRead",{row:row});
 
 });
 
@@ -404,12 +412,12 @@ app.post("/Rescue",upload.single("image"),async (req,res)=>{
 
 app.get("/Rescue",verifyLogin,(req,res)=>{
 
-    res.render("rescuestray",{LoginStatus,LoginProfile,isAdmin});
+    res.render("rescuestray");
     
 });
 
-app.get("/AddBlog",(req,res)=>{
-    res.render("addblog",{LoginStatus,LoginProfile,isAdmin});
+app.get("/AddBlog",[verifyLogin,verifyAdmin],(req,res)=>{
+    res.render("addblog");
 });
 
 app.get("/Logout",(req,res)=>{
@@ -423,14 +431,7 @@ app.get("/Logout",(req,res)=>{
 
 });
 
-app.get("/deleteProfile",verifyLogin,async (req,res)=>{
-
-    if(isAdmin==0)
-    {
-        req.flash("fail","You are not authorized to view that page");
-        res.redirect("/");
-        return;
-    }
+app.get("/deleteProfile",[verifyLogin,verifyAdmin],async (req,res)=>{
 
     const { id } = req.query;
 
@@ -439,15 +440,7 @@ app.get("/deleteProfile",verifyLogin,async (req,res)=>{
     res.redirect("/Profile");
 }); 
 
-app.get("/makeadmin", verifyLogin ,async (req,res)=>{
-    
-    
-    if(isAdmin==0)
-    {
-        req.flash("fail","You are not authorized to view that page");
-        res.redirect("/");
-        return;
-    }
+app.get("/makeadmin", [verifyLogin,verifyAdmin] ,async (req,res)=>{
     
     const { id } = req.query;
     
@@ -460,16 +453,9 @@ app.get("/makeadmin", verifyLogin ,async (req,res)=>{
 
 })
 
-app.get("/deleteBlog",verifyLogin,async (req,res)=>{
+app.get("/deleteBlog",[verifyLogin, verifyAdmin],async (req,res)=>{
 
     const { id } = req.query;
-    
-    if(isAdmin==0)
-    {
-        req.flash("fail","You are not authorized to view that page");
-        res.redirect("/");
-        return;
-    }
 
     const tmp = await Blog.findByIdAndDelete(id);
 
@@ -479,16 +465,9 @@ app.get("/deleteBlog",verifyLogin,async (req,res)=>{
     
 })
 
-app.get("/deletePet",verifyLogin,async (req,res)=>{
+app.get("/deletePet",[verifyLogin, verifyAdmin],async (req,res)=>{
     
     const { id } = req.query;
-    
-    if(isAdmin==0)
-    {
-        req.flash("fail","You are not authorized to view that page");
-        res.redirect("/");
-        return;
-    }
 
     // await Pet.deleteOne({name:""})
     
@@ -524,7 +503,7 @@ app.post("/editProfileInfo", upload.single('ProfileImage'),async (req,res)=>{
 });
 
 app.get("/Forgot", async(req,res)=>{
-    res.render("forgotPassword",{isAdmin,LoginProfile,LoginStatus});
+    res.render("forgotPassword");
 });
 
 app.post("/verify", async(req,res)=>{
@@ -534,8 +513,6 @@ app.post("/verify", async(req,res)=>{
     console.log(req.body);
     const temp = await Profile.findOne({username});
     console.log(temp);
-
-
 
     if( temp==null || temp.email!==email || temp.phone!=phone) 
     {
